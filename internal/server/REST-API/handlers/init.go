@@ -25,3 +25,4 @@ func InitHandlers(router *gin.Engine, sessia redis.SessionCache, storage postgre
 }
 
 // TODO: Сделать подсказки
+// TODO: Организовать доставку описания к уведомлениям

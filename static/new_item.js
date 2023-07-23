@@ -29,7 +29,7 @@ function sendRequestAddItem(event) {
     let cost = costInput.value;
 
     if (allDontEmpty(name, description, count, cost)) {
-        if (cost > 0 && count > 0) {
+        if (correctCost(cost) && correctCount(count)) {
             fetch("/add_item", {
                 method: "POST",
                 headers: {
@@ -51,7 +51,7 @@ function sendRequestAddItem(event) {
                 }
             }).catch(error => console.log(error));
         } else {
-            alert("Цена и количество должны быть больше 0")
+            alert("Цена и количество должны быть больше 0 и не более 9999")
         }
     } else {
         alert("Заполните все поля!")
@@ -63,4 +63,15 @@ function allDontEmpty(name, description, count, cost) {
         description !== "" &&
         count !== "" &&
         cost !== ""
+}
+
+const min = 1
+const max = 9999
+
+function correctCost(cost){
+    return min <= cost && cost <= max
+}
+
+function correctCount(count){
+    return min <= count && count <= max
 }

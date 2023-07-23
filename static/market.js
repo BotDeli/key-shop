@@ -16,6 +16,17 @@ function hideSelectorsPage(){
 market = document.getElementById("market");
 startListHtml = market.innerHTML;
 
+let upd_btn = document.getElementById("button_update_list")
+upd_btn.addEventListener("click", updateList)
+
+function updateList(event){
+    event.preventDefault();
+    market.innerHTML = startListHtml;
+    sendRequestGetItems();
+}
+
+let window_message = document.getElementById("window_message");
+
 function sendRequestGetItems(){
     fetch("/items", {
         method: "POST",
@@ -35,6 +46,11 @@ function sendRequestGetItems(){
                     td.textContent = subItem;
                     tr.appendChild(td);
                 })
+                tr.style = "cursor: pointer;";
+                tr.onclick = () =>{
+                    window_message.innerText = item[0];
+                    window_message.hidden = false;
+                }
                 market.appendChild(tr);
             })
         }
@@ -56,18 +72,10 @@ function showSelectorsPage(){
     }).catch(err => console.log(err));
 }
 
-function updateList(event){
-    event.preventDefault();
-    market.innerHTML = startListHtml;
-    sendRequestGetItems();
-}
 lastPage = document.getElementById("last_page");
 nextPage = document.getElementById("next_page");
 lastPage.addEventListener("click", setLastPage);
 nextPage.addEventListener("click", setNextPage);
-
-let upd_btn = document.getElementById("button_update_list")
-upd_btn.addEventListener("click", updateList)
 
 function setLastPage(event){
     event.preventDefault();

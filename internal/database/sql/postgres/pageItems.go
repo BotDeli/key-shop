@@ -3,7 +3,6 @@ package postgres
 import (
 	"database/sql"
 	"errors"
-	"fmt"
 	"key-shop/pkg/errorHandle"
 	"log"
 )
@@ -37,7 +36,6 @@ func (p Postgres) GetCountPages() (int, error) {
 	if allItems%countItemsPerPage != 0 {
 		allPages++
 	}
-	fmt.Println(allItems, allPages)
 	return allPages, nil
 }
 

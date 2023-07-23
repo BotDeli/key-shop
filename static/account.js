@@ -5,20 +5,27 @@ function goMarket(event) {
     document.location.replace("./authorized")
 }
 
+let market = document.getElementById("market");
+let startListHtml = market.innerHTML;
+
 let upd_btn = document.getElementById("button_update_list")
 upd_btn.addEventListener("click", updateList)
+
+function updateList(event){
+    event.preventDefault();
+    market.innerHTML = startListHtml;
+    sendRequestGetMyItems();
+}
 
 document.addEventListener("DOMContentLoaded", loadPage);
 
 function loadPage(event){
     event.preventDefault();
-    sendRequestGetItems();
+    sendRequestGetMyItems();
 }
 
-market = document.getElementById("market");
-startListHtml = market.innerHTML;
 var listItems;
-function sendRequestGetItems(){
+function sendRequestGetMyItems(){
     fetch("/my_items", {}).
     then(response => response.json()).
     then(data => {
@@ -41,11 +48,4 @@ function sendRequestGetItems(){
             market.appendChild(tr);
         })
     })
-}
-
-
-function updateList(event){
-    event.preventDefault();
-    market.innerHTML = startListHtml;
-    sendRequestGetItems();
 }
