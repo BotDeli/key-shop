@@ -20,13 +20,24 @@ type Item struct {
 }
 
 var (
-	ErrorAddItem    = errors.New("error add item")
-	ErrorDeleteItem = errors.New("error delete item")
+	ErrorAddItem         = errors.New("error add item")
+	ErrorDeleteItem      = errors.New("error delete item")
+	ErrorLimitCountItems = errors.New("error limit count items")
 )
 
 func (p Postgres) AddItem(login string, item Item) error {
+	if limitedCountItems(p, login) {
+		return ErrorLimitCountItems
+	}
 	query := "INSERT INTO items(name, description, count, cost, seller) VALUES($1, $2, $3, $4, $5)"
 	return executeQueryAllParams(p, "AddItem", query, login, item, ErrorAddItem)
+}
+
+func limitedCountItems(p Postgres, login string) bool {
+	query := "SELECT COUNT(*) FROM items WHERE seller = $1"
+	var count int
+	err := p.Database.QueryRow(query, login).Scan(&count)
+	return err == nil && count >= 10
 }
 
 func (p Postgres) DeleteItem(login string, item Item) error {

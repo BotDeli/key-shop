@@ -5,6 +5,7 @@ import (
 	"key-shop/internal/database/noSql/redis"
 	"key-shop/pkg/errorHandle"
 	"log"
+	"net/http"
 )
 
 func handlerExitUser(sessia redis.SessionCache) gin.HandlerFunc {
@@ -14,7 +15,7 @@ func handlerExitUser(sessia redis.SessionCache) gin.HandlerFunc {
 		err = sessia.DeleteSessionKey(sessionKey)
 		checkError(err)
 		setCookieSessia(c, "", -1)
-		c.Status(200)
+		c.Status(http.StatusAccepted)
 	}
 }
 

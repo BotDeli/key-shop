@@ -4,7 +4,7 @@ import (
 	"key-shop/internal/config"
 	"key-shop/internal/database/noSql/redis"
 	"key-shop/internal/database/sql/postgres"
-	REST_API "key-shop/internal/server/REST-API"
+	Rest "key-shop/internal/server/REST-API"
 )
 
 func StartApplication() {
@@ -14,5 +14,5 @@ func StartApplication() {
 	defer storage.Disconnect()
 	session := redis.StartSessionCache(cfg.Redis)
 	defer session.DisconnectSessionCache()
-	REST_API.StartServer(cfg.HttpServer, session, storage)
+	Rest.StartServer(cfg.HttpServer, session, storage)
 }

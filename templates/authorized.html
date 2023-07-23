@@ -2,52 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>tasks</title>
-    <link rel="stylesheet" href="../static/authorized.css">
+    <title>Market</title>
+    <link rel="stylesheet" href="../static/new_item.css">
     <link rel="stylesheet" href="../static/buttons.css">
     <link rel="stylesheet" href="../static/frame.css">
     <link rel="stylesheet" href="../static/market.css">
 </head>
 <body>
     <div class="menu">
+        <label class="text-menu">Market</label>
+        <a id="set-login" href="../account">My account</a>
         <input id="exit" type="button" value="Выход">
     </div>
     <main>
         <div class="left_panel">
             <input id="button_update_list" type="button" value="Обновить список">
-            <input id="button_add_new_item" type="button" value="Создать товар">
+            <input id="button_my_items" type="button" value="Мои товары">
         </div>
         <div class="right_panel">
-            <ul id="market">
-                <li class="sell-item"><ul class="sell-item-description">
-                        <li>Название</li>
-                        <li>Количество</li>
-                        <li>Цена</li>
-                        <li>Продавец</li>
-                    </ul></li>
-            </ul>
+            <table id="market">
+                <tr class="sell-item sell-item-description">
+                    <th>Название</th>
+                    <th>Количество</th>
+                    <th>Цена</th>
+                    <th>Продавец</th>
+                </tr>
+            </table>
             <form class="page_selector">
                 <input id="last_page" type="button" value="<-">
                 <input id="next_page" type="button" value="->">
             </form>
         </div>
     </main>
-    <form id="new_item">
-        <div class="top">
-            <span>Новый товар</span>
-            <input type="button" id="close" value="X">
-        </div>
-        <label class="input_new_item">
-            <input id="name" type="text" placeholder="Название">
-            <input id="description" type="text" placeholder="Описание">
-            <input id="count" type="number" placeholder="Количество">
-            <input id="cost" type="number" placeholder="Цена">
-            <input type="submit" value="Создать">
-        </label>
-    </form>
-
-    <script type="application/javascript" src="../static/authorized.js"></script>
-    <script type="application/javascript" src="../static/market.js"></script>
+    <script type="application/javascript" src="../static/authorized.js?v.6"></script>
+    <script type="application/javascript" src="../static/market.js?v.7"></script>
+    <script type="application/javascript" src="../static/exit.js?v.2"></script>
+    <script type="application/javascript" src="../static/login.js?v.3"></script>
     <footer class="footer"></footer>
 </body>
 </html>

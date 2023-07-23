@@ -10,6 +10,7 @@
     </head>
     <body>
         <div class="menu">
+                <label class="text-menu">Market</label>
                 <input type="button" id="login" value="Войти">
                 <input type="button" id="signUp" value="Регистрация">
         </div>
@@ -18,14 +19,14 @@
                 <input id="button_update_list" type="button" value="Обновить список">
             </div>
             <div class="right_panel">
-                <ul id="market">
-                    <li class="sell-item"><ul class="sell-item-description">
-                            <li>Название</li>
-                            <li>Количество</li>
-                            <li>Цена</li>
-                            <li>Продавец</li>
-                            </ul></li>
-                </ul>
+                <table id="market">
+                    <tr class="sell-item sell-item-description">
+                        <th>Название</th>
+                        <th>Количество</th>
+                        <th>Цена</th>
+                        <th>Продавец</th>
+                    </tr>
+                </table>
                 <form class="page_selector">
                     <input id="last_page" type="button" value="<-">
                     <input id="next_page" type="button" value="->">
@@ -54,5 +55,5 @@
         <footer class="footer"></footer>
     </body>
     <script src="../static/main.js"></script>
-    <script type="application/javascript" src="../static/market.js"></script>
+    <script type="application/javascript" src="../static/market.js?v.3"></script>
 </html>

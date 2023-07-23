@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>myAccount</title>
+    <link rel="stylesheet" href="../static/frame.css">
+    <link rel="stylesheet" href="../static/new_item.css">
+    <link rel="stylesheet" href="../static/market.css?v.1">
+    <link rel="stylesheet" href="../static/buttons.css">
+</head>
+<body>
+    <div class="menu">
+        <label class="text-menu">My items</label>
+        <a id="set-login" href="../account">My account</a>
+        <input id="exit" type="button" value="Выход">
+    </div>
+    <main>
+        <div class="left_panel">
+            <input id="button_update_list" type="button" value="Обновить список">
+            <input id="button_add_new_item" type="button" value="Создать товар">
+            <input id="return_to_market" type="button" value="Вернуться в market">
+        </div>
+        <div class="right_panel">
+            <table id="market">
+                <tr class="sell-item sell-item-description">
+                    <th>Название</th>
+                    <th>Количество</th>
+                    <th>Цена</th>
+                    <th>Удалить</th>
+                </tr>
+            </table>
+        </div>
+    </main>
+    <form id="new_item">
+        <div class="top">
+            <span>Новый товар</span>
+            <input type="button" id="close" value="X">
+        </div>
+        <label class="input_new_item">
+            <input id="name" type="text" placeholder="Название">
+            <input id="description" type="text" placeholder="Описание">
+            <input id="count" type="number" placeholder="Количество">
+            <input id="cost" type="number" placeholder="Цена">
+            <input type="submit" value="Создать">
+        </label>
+    </form>
+    <script type="application/javascript" src="../static/account.js?v.3"></script>
+    <script type="application/javascript" src="../static/login.js?v.2"></script>
+    <script type="application/javascript" src="../static/new_item.js?v.5"></script>
+    <script type="application/javascript" src="../static/exit.js"></script>
+    <footer class="footer"></footer>
+</body>
+</html>

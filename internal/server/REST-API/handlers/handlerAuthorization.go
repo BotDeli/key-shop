@@ -40,7 +40,7 @@ func handlerAuthorization(sessia redis.SessionCache, method func(postgres.User) 
 		}
 		sessionKey, err := sessia.GetSessionKey(user.Login)
 		setCookieSessia(c, sessionKey, int(24*time.Hour))
-		sendResponse(c, 200, err)
+		sendResponse(c, http.StatusAccepted, err)
 	}
 }
 

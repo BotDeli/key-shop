@@ -2,11 +2,17 @@
     list-style: none;
     font-size: 22px;
     overflow: hidden;
+    width: 100%;
+}
+
+#market input {
+    margin: 1%;
+    height: 90%;
 }
 
 .sell-item{
     margin: 7px;
-    border-radius: 10px;
+    border-radius: 30px;
     height: 30px;
     background-color: #d9d9d9;
     padding: 2px;
@@ -16,8 +22,8 @@
     list-style: none;
     margin-left: 5px;
     margin-right: 5px;
-    display: flex;
     justify-content: space-between;
+    border-color: red;
 }
 
 .right_panel{
@@ -25,4 +31,23 @@
     width: 100%;
     margin: 10px;
     background-color: gray;
+}
+
+table {
+    border-radius: 10px;
+}
+
+table td {
+    border-bottom-color: blue;
+}
+
+table {
+    border-collapse: collapse;
+    text-align: center;
+}
+td {
+    background-color: lightblue;
+}
+tr:nth-child(even) td {
+    background-color: lightgray;
 }
