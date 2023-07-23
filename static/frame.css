@@ -1,0 +1,48 @@
+.footer{
+    width: 100%;
+    height: 30px;
+    background: #588bee;
+}
+
+.left_panel {
+    background-color: #588bee;
+    min-height: 100vh;
+    padding: 15px 10px 0 10px;
+    text-align: center;
+}
+
+.left_panel input{
+    height: 40px;
+    min-width: 80%;
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px auto auto auto;
+}
+
+.menu {
+    text-align: right;
+    font-size: 22px;
+    padding-top: 10px;
+    padding-right: 5px;
+    font-weight: bold;
+    background-color: cornflowerblue;
+    padding-bottom: 10px;
+    height: 35px;
+}
+
+.menu input {
+    background-color: #384ca2;
+    margin-left: 5px;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.page_selector{
+    display: flex;
+    justify-content: center;
+}
+
+.page_selector input{
+    margin: 10px;
+}

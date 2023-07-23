@@ -1,0 +1,28 @@
+#market{
+    list-style: none;
+    font-size: 22px;
+    overflow: hidden;
+}
+
+.sell-item{
+    margin: 7px;
+    border-radius: 10px;
+    height: 30px;
+    background-color: #d9d9d9;
+    padding: 2px;
+}
+
+.sell-item-description{
+    list-style: none;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.right_panel{
+    border-radius: 10px;
+    width: 100%;
+    margin: 10px;
+    background-color: gray;
+}

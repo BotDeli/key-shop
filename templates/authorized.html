@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tasks</title>
+    <link rel="stylesheet" href="../static/authorized.css">
+    <link rel="stylesheet" href="../static/buttons.css">
+    <link rel="stylesheet" href="../static/frame.css">
+    <link rel="stylesheet" href="../static/market.css">
+</head>
+<body>
+    <div class="menu">
+        <input id="exit" type="button" value="Выход">
+    </div>
+    <main>
+        <div class="left_panel">
+            <input id="button_update_list" type="button" value="Обновить список">
+            <input id="button_add_new_item" type="button" value="Создать товар">
+        </div>
+        <div class="right_panel">
+            <ul id="market">
+                <li class="sell-item"><ul class="sell-item-description">
+                        <li>Название</li>
+                        <li>Количество</li>
+                        <li>Цена</li>
+                        <li>Продавец</li>
+                    </ul></li>
+            </ul>
+            <form class="page_selector">
+                <input id="last_page" type="button" value="<-">
+                <input id="next_page" type="button" value="->">
+            </form>
+        </div>
+    </main>
+    <form id="new_item">
+        <div class="top">
+            <span>Новый товар</span>
+            <input type="button" id="close" value="X">
+        </div>
+        <label class="input_new_item">
+            <input id="name" type="text" placeholder="Название">
+            <input id="description" type="text" placeholder="Описание">
+            <input id="count" type="number" placeholder="Количество">
+            <input id="cost" type="number" placeholder="Цена">
+            <input type="submit" value="Создать">
+        </label>
+    </form>
+
+    <script type="application/javascript" src="../static/authorized.js"></script>
+    <script type="application/javascript" src="../static/market.js"></script>
+    <footer class="footer"></footer>
+</body>
+</html>

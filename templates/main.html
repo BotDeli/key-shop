@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>HomePage</title>
+        <link rel="stylesheet" href="../static/main.css">
+        <link rel="stylesheet" href="../static/buttons.css">
+        <link rel="stylesheet" href="../static/frame.css">
+        <link rel="stylesheet" href="../static/market.css">
+    </head>
+    <body>
+        <div class="menu">
+                <input type="button" id="login" value="Войти">
+                <input type="button" id="signUp" value="Регистрация">
+        </div>
+        <main>
+            <div class="left_panel">
+                <input id="button_update_list" type="button" value="Обновить список">
+            </div>
+            <div class="right_panel">
+                <ul id="market">
+                    <li class="sell-item"><ul class="sell-item-description">
+                            <li>Название</li>
+                            <li>Количество</li>
+                            <li>Цена</li>
+                            <li>Продавец</li>
+                            </ul></li>
+                </ul>
+                <form class="page_selector">
+                    <input id="last_page" type="button" value="<-">
+                    <input id="next_page" type="button" value="->">
+                </form>
+            </div>
+        <div id="window">
+            <form id="window_authorization">
+                <div class="menu_window">
+                        <span class="text_auto">
+                            <label id="prefix">Login</label>
+                        </span>
+                    <input type="button" class="login" id="close" value="X">
+                </div>
+                <br>
+                <label class="inp">
+                    <input id="login_inp" type="text" placeholder="Логин">
+                    <input id="password_inp" type="text" placeholder="Пароль">
+                </label>
+                <span class="submit">
+                        <input id="submit" type="submit" value="Submit">
+                </span>
+                <p id="output"></p>
+            </form>
+        </div>
+        </main>
+        <footer class="footer"></footer>
+    </body>
+    <script src="../static/main.js"></script>
+    <script type="application/javascript" src="../static/market.js"></script>
+</html>

@@ -1,0 +1,12 @@
+http-server:
+  address: "localhost:8080"
+  read-header-timeout: 4s
+  idle-timeout: 1m
+postgres:
+  user: "kare"
+  password: ""
+  host: "localhost"
+  dbname: "keyShop"
+  sslmode: "disable"
+redis:
+  address: "localhost:6379"
