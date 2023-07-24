@@ -25,8 +25,6 @@ function updateList(event){
     sendRequestGetItems();
 }
 
-let window_message = document.getElementById("window_message");
-
 function sendRequestGetItems(){
     fetch("/items", {
         method: "POST",
@@ -41,15 +39,17 @@ function sendRequestGetItems(){
             listItems.forEach(item => {
                 let tr = document.createElement("tr");
                 tr.className = "sell-item sell-item-description"
-                item.forEach(subItem => {
+
+                for(let i = 1; i < item.length; i++){
                     let td = document.createElement("td");
-                    td.textContent = subItem;
+                    td.textContent = item[i];
                     tr.appendChild(td);
-                })
+                }
+
                 tr.style = "cursor: pointer;";
                 tr.onclick = () =>{
-                    window_message.innerText = item[0];
-                    window_message.hidden = false;
+                    document.getElementById("message").innerText = item[0];
+                    document.getElementById("window_message").hidden = false;
                 }
                 market.appendChild(tr);
             })

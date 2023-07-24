@@ -13,10 +13,10 @@ type ItemsDisplay interface {
 }
 
 type Item struct {
-	Name        string
-	Description string
-	Count       string
-	Cost        string
+	Name        string `json:"name"`
+	Description string `json:"description"`
+	Count       string `json:"count"`
+	Cost        string `json:"cost"`
 }
 
 var (

@@ -13,3 +13,9 @@
     min-width: 10%;
     min-height: 5%;
 }
+
+.message{
+    font-size: 30px;
+    font-weight: bold;
+    color: whitesmoke;
+}

@@ -69,6 +69,7 @@ func (p Postgres) GetPageAllItems(numberPage int) (Page, error) {
 			log.Println(errorHandle.ErrorFormat(path, "pageItems", "GetPage", err))
 		}
 		page.Items = append(page.Items, []string{
+			description,
 			name,
 			count,
 			cost,
@@ -109,6 +110,7 @@ func (p Postgres) GetPageMyItems(login string) (Page, error) {
 			log.Println(errorHandle.ErrorFormat(path, "items.go", "GetPageMyItems", err))
 		}
 		page.Items = append(page.Items, []string{
+			description,
 			name,
 			count,
 			cost,

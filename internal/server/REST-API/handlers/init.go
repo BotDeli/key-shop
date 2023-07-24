@@ -22,6 +22,7 @@ func InitHandlers(router *gin.Engine, sessia redis.SessionCache, storage postgre
 	router.GET("/get_login", handlerGetLogin(sessia))
 	router.GET("/account", showAccountPage(sessia))
 	router.GET("/my_items", handlerGetMyItems(sessia, storage))
+	router.DELETE("/delete_item", handlerDeleteItem(sessia, storage))
 }
 
 // TODO: Сделать подсказки

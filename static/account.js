@@ -12,7 +12,9 @@ let upd_btn = document.getElementById("button_update_list")
 upd_btn.addEventListener("click", updateList)
 
 function updateList(event){
-    event.preventDefault();
+    if (event !== null){
+        event.preventDefault();
+    }
     market.innerHTML = startListHtml;
     sendRequestGetMyItems();
 }
@@ -33,18 +35,43 @@ function sendRequestGetMyItems(){
         listItems.forEach(item => {
             let tr = document.createElement("tr");
             tr.className = "sell-item sell-item-description"
-            item.forEach(subItem => {
+
+            for(let i = 1; i < item.length; i++){
                 let td = document.createElement("td");
-                td.textContent = subItem;
+                td.textContent = item[i];
                 tr.appendChild(td);
-            })
+            }
+
             let td = document.createElement("td");
             let btn = document.createElement("input");
             btn.type = "button"
             btn.value = "Удалить"
-            btn.onclick = () => console.log(item)
+            btn.onclick = () => {
+                fetch("/delete_item", {
+                    method: "DELETE",
+                    headers: {
+                        "Sender": "application/json",
+                    },
+                    body: JSON.stringify({
+                        "name": item[1],
+                        "description": item[0],
+                        "count": item[2],
+                        "cost": item[3],
+                    })
+                }).then(() => {
+                    message_window.hidden = true;
+                    updateList(null);
+                }).catch(error => console.log(error))
+            }
             td.appendChild(btn);
             tr.appendChild(td);
+
+            tr.style = "cursor: pointer;";
+            tr.onclick = () => {
+                document.getElementById("message").innerText = item[0];
+                document.getElementById("window_message").hidden = false;
+            }
+
             market.appendChild(tr);
         })
     })

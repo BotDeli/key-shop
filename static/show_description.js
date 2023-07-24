@@ -1,8 +1,8 @@
-let message = document.getElementById("window_message");
-message.addEventListener("click", closeMessage);
-message.hidden = true;
+let message_window = document.getElementById("window_message");
+message_window.addEventListener("click", closeMessage);
+message_window.hidden = true;
 
 function closeMessage(event) {
     event.preventDefault();
-    message.hidden = true;
+    message_window.hidden = true;
 }
