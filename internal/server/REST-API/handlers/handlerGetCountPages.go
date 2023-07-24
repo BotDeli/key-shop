@@ -14,10 +14,6 @@ func handlerGetCountPages(display postgres.PageDisplay) gin.HandlerFunc {
 			return
 		}
 
-		c.JSON(http.StatusOK, struct {
-			Pages int `json:"pages"`
-		}{
-			Pages: pages,
-		})
+		c.JSON(http.StatusOK, gin.H{"pages": pages})
 	}
 }

@@ -18,10 +18,6 @@ func handlerGetLogin(sessia redis.SessionCache) gin.HandlerFunc {
 			return
 		}
 
-		c.JSON(http.StatusOK, struct {
-			Login string `json:"login"`
-		}{
-			Login: login,
-		})
+		c.JSON(http.StatusOK, gin.H{"login": login})
 	}
 }
