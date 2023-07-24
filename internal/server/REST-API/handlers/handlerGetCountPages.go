@@ -13,6 +13,7 @@ func handlerGetCountPages(display postgres.PageDisplay) gin.HandlerFunc {
 			c.Status(http.StatusInternalServerError)
 			return
 		}
+
 		c.JSON(http.StatusOK, struct {
 			Pages int `json:"pages"`
 		}{

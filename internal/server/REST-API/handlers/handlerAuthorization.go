@@ -26,22 +26,40 @@ func handlerLogin(sessia redis.SessionCache, a postgres.Authorization) gin.Handl
 
 func handlerAuthorization(sessia redis.SessionCache, method func(postgres.User) error, fileName, functionName string) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		var user postgres.User
-		err := c.ShouldBindJSON(&user)
+		user, err := getUser(c, fileName, functionName)
 		if err != nil {
-			log.Println(errorHandle.ErrorFormat(path, fileName, functionName, err))
-			sendResponse(c, http.StatusBadRequest, ErrorGetDataRequest)
 			return
 		}
-		err = method(user)
+
+		err = executeMethod(c, method, user)
 		if err != nil {
-			sendResponse(c, http.StatusConflict, err)
 			return
 		}
+
 		sessionKey, err := sessia.GetSessionKey(user.Login)
+
 		setCookieSessia(c, sessionKey, int(24*time.Hour))
+
 		sendResponse(c, http.StatusAccepted, err)
 	}
+}
+
+func getUser(c *gin.Context, fileName, functionName string) (postgres.User, error) {
+	var user postgres.User
+	err := c.ShouldBindJSON(&user)
+	if err != nil {
+		log.Println(errorHandle.ErrorFormat(path, fileName, functionName, err))
+		sendResponse(c, http.StatusBadRequest, ErrorGetDataRequest)
+	}
+	return user, err
+}
+
+func executeMethod(c *gin.Context, method func(postgres.User) error, user postgres.User) error {
+	err := method(user)
+	if err != nil {
+		sendResponse(c, http.StatusConflict, err)
+	}
+	return err
 }
 
 func setCookieSessia(c *gin.Context, sessionKey string, maxAge int) {

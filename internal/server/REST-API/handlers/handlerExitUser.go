@@ -10,17 +10,17 @@ import (
 
 func handlerExitUser(sessia redis.SessionCache) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		sessionKey, err := c.Cookie("sessia")
-		checkError(err)
+		sessionKey, err := getSessionKey(c)
+		if err != nil {
+			return
+		}
+
 		err = sessia.DeleteSessionKey(sessionKey)
-		checkError(err)
+		if err != nil {
+			log.Println(errorHandle.ErrorFormat(path, "handlerExitUser", "handlerExitUser", err))
+		}
+
 		setCookieSessia(c, "", -1)
 		c.Status(http.StatusAccepted)
-	}
-}
-
-func checkError(err error) {
-	if err != nil {
-		log.Println(errorHandle.ErrorFormat(path, "handlerExitUser", "handlerExitUser", err))
 	}
 }

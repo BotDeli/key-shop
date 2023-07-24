@@ -9,15 +9,13 @@ import (
 
 func handlerGetMyItems(sessia redis.SessionCache, display postgres.PageDisplay) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		sessionKey, err := c.Cookie("sessia")
+		sessionKey, err := getSessionKey(c)
 		if err != nil {
-			c.Status(http.StatusUnauthorized)
 			return
 		}
 
-		login, err := sessia.GetLogin(sessionKey)
+		login, err := getLogin(c, sessia, sessionKey)
 		if err != nil {
-			c.Status(http.StatusUnauthorized)
 			return
 		}
 

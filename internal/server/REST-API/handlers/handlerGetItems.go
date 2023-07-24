@@ -9,6 +9,10 @@ import (
 func handlerGetPageItems(display postgres.PageDisplay) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		numberPage, err := getNumberPage(c)
+		if err != nil {
+			c.Status(http.StatusBadRequest)
+			return
+		}
 
 		page, err := display.GetPageAllItems(numberPage)
 

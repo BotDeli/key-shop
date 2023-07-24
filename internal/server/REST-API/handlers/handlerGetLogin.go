@@ -8,14 +8,14 @@ import (
 
 func handlerGetLogin(sessia redis.SessionCache) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		sessionKey, err := c.Cookie("sessia")
+		sessionKey, err := getSessionKey(c)
 		if err != nil {
-			c.Status(http.StatusBadRequest)
+			return
 		}
 
-		login, err := sessia.GetLogin(sessionKey)
+		login, err := getLogin(c, sessia, sessionKey)
 		if err != nil {
-			c.Status(http.StatusBadRequest)
+			return
 		}
 
 		c.JSON(http.StatusOK, struct {
